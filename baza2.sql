@@ -147,7 +147,7 @@ INSERT INTO dbo.Auto
 VALUES ('Fiat','Ducato','WX67G40','2022-01-05','flotona'),('Fiat','Ducato','WX67G41','2022-01-05','flotona'),('Fiat','Ducato','WX22G41','2022-01-05','flotona'),('Fiat','Ducato','WX11G41','2022-01-05','flotona'),('Fiat','Ducato','WX1CG41','2022-01-05','flotona')
 INSERT INTO dbo.Auto
 VALUES ('Renault','MASTER','SK1234A','2021-12-05','flotona'),('Renault','MASTER','SK21323A','2021-12-05','flotona'),('Renault','MASTER','SK1221A','2021-12-05','flotona'),('Renault','MASTER','SK2133A','2021-12-05','flotona'),('Renault','MASTER','SK5555K','2021-12-05','flotona')
-INSERT INTO dbo.Auto
++INSERT INTO dbo.Auto
 VALUES ('Ford','Transit','SK2133X','2020-06-22','flotona'),('Ford','Transit','SK2133X','2020-06-22','flotona'),('Ford','Transit','SK2123X','2020-06-22','flotona'),('Ford','Transit','SK2233X','2020-06-22','flotona'),('Ford','Transit','SK3333X','2020-06-22','flotona'),('Ford','Transit','SK2222X','2020-06-22','flotona'),('Ford','Transit','SK6669X','2020-06-22','flotona'),('Ford','Transit','SK9996X','2020-06-22','flotona'),('Ford','Transit','SK1298X','2020-06-22','flotona'),('Ford','Transit','SK9876X','2020-06-22','flotona'),('Ford','Transit','SK5678X','2020-06-22','flotona'), ('Ford','Transit','SK2823X','2020-06-22','flotona')
 SELECT * FROM AUTO
 
@@ -158,4 +158,24 @@ WHERE Data_Rejestracji >='2021.12.31'
 ORDER BY Marka 
 /*dodanie danych do tabeli kategoria*/
 INSERT INTO dbo.Kategoria
-VALUES ('S','10.99'),('M','13.99')
+VALUES ('S','10.99'),('M','13.99'),('L','15.99'),('XL','16.99'),('XLL','20.99')
+/*dodanie danych do tabeli Nadawca*/
+INSERT INTO dbo.Nadawca 
+VALUES ('Adam','Nowak','adamnowak@gmail.com','672829124','Katowice','40002','Powstańców','2/2')
+INSERT INTO dbo.Nadawca 
+VALUES ('Wiesław','Wilk','lubieplacki@gmail.com','543762345','Świnoujście','50539','Kostki','59'),
+('Feliks','Tomczyk','tak12@gmail.com','223323234','Suwałki','26880','Chabrowa','5')
+INSERT INTO dbo.Nadawca 
+VALUES ('Victoria','Nowak','nowak12@gmail.com','698367852','Jaworzno','44203','Parkowa','50'),
+('Janina','Marciniak','maarciniak@gmail.com','5318527534','Świnoujście','64167','Orzechowa','25'),
+('Nina','Zalewska','nzalewska@gmail.com','698254169','Poznań','60480','Parkowa','85'),
+('Beata','Ratajczak','bratajczak12@gmail.com','521954758','Gorzów Wielkopolski','44967','Zamkowa','2/4')
+/* dodanie danych do tabeli odbiorca*/
+INSERT INTO dbo.Odbiorca
+VALUES ('Victoria','Nowak','nowak12@gmail.com','698367852','Jaworzno','44203','Parkowa','50'),
+('Janina','Marciniak','maarciniak@gmail.com','5318527534','Świnoujście','64167','Orzechowa','25'),
+('Nina','Zalewska','nzalewska@gmail.com','698254169','Poznań','60480','Parkowa','85'),
+('Beata','Ratajczak','bratajczak12@gmail.com','521954758','Gorzów Wielkopolski','44967','Zamkowa','2/4'),
+('Wiesław','Wilk','lubieplacki@gmail.com','543762345','Świnoujście','50539','Kostki','59'),
+('Feliks','Tomczyk','tak12@gmail.com','223323234','Suwałki','26880','Chabrowa','5'),
+('Adam','Nowak','adamnowak@gmail.com','672829124','Katowice','40002','Powstańców','2/2')
