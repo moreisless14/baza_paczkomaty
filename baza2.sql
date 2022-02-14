@@ -29,19 +29,7 @@ Nr_telefonu_sluz BIGINT NULL  ,
 Od_kiedy_zaturdniony DATE NOT NULL ,
 Zwolnienie DATE NULL
 )
-create table Paczkomat_Nadania 
-(
-ID_Paczkomat_Nadania int Identity (1,1) NOT NULL  PRIMARY KEY, 
-Symbol_ind TEXT,
-Miasto VARCHAR(20),
-Kod_pocztowy TEXT NOT NULL,
-Ulica VARCHAR(40) NOT NULL,
-Nr_ulicy TEXT  NOT NULL,
-Ilosc_S INT NOT NULL,
-Ilosc_M INT  NOT NULL,
-Ilosc_l INT NOT NULL 
 
-)
 create table Paczkomat_Nadania 
 (
 ID_Paczkomat_Nadania int Identity (1,1) NOT NULL  PRIMARY KEY, 
@@ -52,11 +40,13 @@ Ulica VARCHAR(40) NOT NULL,
 Nr_ulicy TEXT  NOT NULL,
 Ilosc_S INT  NULL,
 Ilosc_M INT   NULL,
-Ilosc_l INT  NULL 
+Ilosc_l INT  NULL,
+Ilosc_XL INT NULL,
+Ilosc_XLL INT NULL
 )
 create table Paczkomat_Odbioru 
 (
-ID_Paczkomat_Odbioru int Identity (1,1) NOT NULL  PRIMARY KEY,
+ID_Paczkomat_Odbioru  int Identity (1,1) NOT NULL  PRIMARY KEY, 
 Symbol_ind TEXT,
 Miasto VARCHAR(20),
 Kod_pocztowy TEXT NOT NULL,
@@ -64,7 +54,9 @@ Ulica VARCHAR(40) NOT NULL,
 Nr_ulicy TEXT  NOT NULL,
 Ilosc_S INT  NULL,
 Ilosc_M INT   NULL,
-Ilosc_l INT  NULL 
+Ilosc_l INT  NULL,
+Ilosc_XL INT NULL,
+Ilosc_XLL INT NULL
 )
  create table Nadawca (
 ID_Nadawca int Identity (1,1) NOT NULL  PRIMARY KEY,
@@ -139,7 +131,7 @@ add FOREIGN KEY (ID_Kategoria) REFERENCES Kategoria(ID_Kategoria)
 alter table Paczka 
 add FOREIGN KEY (ID_Odbiorca) REFERENCES Odbiorca(ID_Odbiorca)
 alter table Paczka 
-add FOREIGN KEY (ID_Pracownicy) REFERENCES Pracownicy(ID_Pracownicy) INSERT INTO pracownicy VALUES
+add FOREIGN KEY (ID_Pracownicy) REFERENCES Pracownicy(ID_Pracownicy)
 /*koniec dodania łączeń*/
 
 /* dodanie danych do tabeli auto*/
@@ -147,7 +139,7 @@ INSERT INTO dbo.Auto
 VALUES ('Fiat','Ducato','WX67G40','2022-01-05','flotona'),('Fiat','Ducato','WX67G41','2022-01-05','flotona'),('Fiat','Ducato','WX22G41','2022-01-05','flotona'),('Fiat','Ducato','WX11G41','2022-01-05','flotona'),('Fiat','Ducato','WX1CG41','2022-01-05','flotona')
 INSERT INTO dbo.Auto
 VALUES ('Renault','MASTER','SK1234A','2021-12-05','flotona'),('Renault','MASTER','SK21323A','2021-12-05','flotona'),('Renault','MASTER','SK1221A','2021-12-05','flotona'),('Renault','MASTER','SK2133A','2021-12-05','flotona'),('Renault','MASTER','SK5555K','2021-12-05','flotona')
-+INSERT INTO dbo.Auto
+INSERT INTO dbo.Auto
 VALUES ('Ford','Transit','SK2133X','2020-06-22','flotona'),('Ford','Transit','SK2133X','2020-06-22','flotona'),('Ford','Transit','SK2123X','2020-06-22','flotona'),('Ford','Transit','SK2233X','2020-06-22','flotona'),('Ford','Transit','SK3333X','2020-06-22','flotona'),('Ford','Transit','SK2222X','2020-06-22','flotona'),('Ford','Transit','SK6669X','2020-06-22','flotona'),('Ford','Transit','SK9996X','2020-06-22','flotona'),('Ford','Transit','SK1298X','2020-06-22','flotona'),('Ford','Transit','SK9876X','2020-06-22','flotona'),('Ford','Transit','SK5678X','2020-06-22','flotona'), ('Ford','Transit','SK2823X','2020-06-22','flotona')
 SELECT * FROM AUTO
 
@@ -179,3 +171,43 @@ VALUES ('Victoria','Nowak','nowak12@gmail.com','698367852','Jaworzno','44203','P
 ('Wiesław','Wilk','lubieplacki@gmail.com','543762345','Świnoujście','50539','Kostki','59'),
 ('Feliks','Tomczyk','tak12@gmail.com','223323234','Suwałki','26880','Chabrowa','5'),
 ('Adam','Nowak','adamnowak@gmail.com','672829124','Katowice','40002','Powstańców','2/2')
+/*dane do paczki*/
+
+
+/* DODANIE DO PACZKOMATU NADANIA*/
+INSERT INTO dbo.Paczkomat_Nadania
+VALUES ('sk212x','Katowice','40091','Piotra skargi','5','25','10','4',0,0)
+INSERT INTO dbo.Paczkomat_Nadania
+VALUES ('sk212x','Katowice','40091','Piotra skargi','5','25','10','4',0,0),
+('sk123a','Katowice','40004','al. Wojciecha Konfrantego','1a','15','2',0,'5',0),
+('sk258b','Katowice','40015','Mariacka Tylna','12','15','1','2',0,'2'),
+('sk753s','Katowice','40046','Fiołków','5','25','10','4',0,0),
+('sk456a','Katowice','40859','Pukowa','15','25','10','4',0,0),
+('sk147f','Katowice','40833','Oborki','17a','25','10','4',0,0),
+('ch843a','Chorzów','41506','St. Batorego','30b','25','10','4',0,0),
+('sk985e','Katowice','40272','Graniczna','5','25','10','4',0,'11'),
+('sk156e','Katowice','40289','Trzech Stawów','5','25','10','4',0,0)
+/* do paczkoamtu odbioru*/
+INSERT INTO dbo.Paczkomat_Odbioru
+VALUES ('sk212x','Katowice','40091','Piotra skargi','5','25','10','4',0,0),
+('sk123a','Katowice','40004','al. Wojciecha Konfrantego','1a','15','2',0,'5',0),
+('sk258b','Katowice','40015','Mariacka Tylna','12','15','1','2',0,'2'),
+('sk753s','Katowice','40046','Fiołków','5','25','10','4',0,0),
+('sk456a','Katowice','40859','Pukowa','15','25','10','4',0,0),
+('sk147f','Katowice','40833','Oborki','17a','25','10','4',0,0),
+('ch843a','Chorzów','41506','St. Batorego','30b','25','10','4',0,0),
+('sk985e','Katowice','40272','Graniczna','5','25','10','4',0,'11'),
+('sk156e','Katowice','40289','Trzech Stawów','5','25','10','4',0,0),
+('sk212x','Katowice','40091','Piotra skargi','5','25','10','4',0,0)
+/* dane do parcowników*/
+/*dane do reklamacji*/
+/*dane do sortowni*/
+INSERT INTO dbo.Sortownia
+VALUES ('SO159','543267345','Sosnowiec','41218','Innowacyjna','5'),
+('PA126','543758192','Pawlikowice','95200','Pawlikowice','150'),
+('WX233','543156489','Mroków','05552','Burtynowa','10a'),
+('BI259','54315589','Juchnowiec Kościelny','16061','Akacjowa','255a'),
+('PO113','543152589','Wągrowiec','62100','Gnieźnieńska','110a'),
+('GD219','543122589','Tczew','83110','Przemysłowa','7')
+
+
