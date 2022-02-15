@@ -132,6 +132,8 @@ alter table Paczka
 add FOREIGN KEY (ID_Odbiorca) REFERENCES Odbiorca(ID_Odbiorca)
 alter table Paczka 
 add FOREIGN KEY (ID_Pracownicy) REFERENCES Pracownicy(ID_Pracownicy)
+alter table Paczka 
+add FOREIGN KEY (ID_Reklamacje) REFERENCES Reklamacje(ID_Reklamacje)
 /*koniec dodania łączeń*/
 
 /* dodanie danych do tabeli auto*/
@@ -171,8 +173,6 @@ VALUES ('Victoria','Nowak','nowak12@gmail.com','698367852','Jaworzno','44203','P
 ('Wiesław','Wilk','lubieplacki@gmail.com','543762345','Świnoujście','50539','Kostki','59'),
 ('Feliks','Tomczyk','tak12@gmail.com','223323234','Suwałki','26880','Chabrowa','5'),
 ('Adam','Nowak','adamnowak@gmail.com','672829124','Katowice','40002','Powstańców','2/2')
-/*dane do paczki*/
-
 
 /* DODANIE DO PACZKOMATU NADANIA*/
 INSERT INTO dbo.Paczkomat_Nadania
@@ -199,7 +199,7 @@ VALUES ('sk212x','Katowice','40091','Piotra skargi','5','25','10','4',0,0),
 ('sk985e','Katowice','40272','Graniczna','5','25','10','4',0,'11'),
 ('sk156e','Katowice','40289','Trzech Stawów','5','25','10','4',0,0),
 ('sk212x','Katowice','40091','Piotra skargi','5','25','10','4',0,0)
-/* dane do parcowników*/
+
 /*dane do reklamacji*/
 /*dane do sortowni*/
 INSERT INTO dbo.Sortownia
@@ -210,4 +210,19 @@ VALUES ('SO159','543267345','Sosnowiec','41218','Innowacyjna','5'),
 ('PO113','543152589','Wągrowiec','62100','Gnieźnieńska','110a'),
 ('GD219','543122589','Tczew','83110','Przemysłowa','7')
 
+/*dane do paczki*/
+select * from Nadawca
+select * from Odbiorca
+select * from Paczkomat_Nadania
+select* from Paczkomat_Odbioru
+select * from Kategoria
+select * from Pracownicy
+/* dane do parcowników*/
+INSERT INTO dbo.Pracownicy
+VALUES ('Kurier','Katowice','Jan','Kowalksi','852167452','Sosnowiec','41200','Wiśniowa','18/32','531789528','531777825','2009-07-07',null,1,1,16)
+INSERT INTO dbo.Pracownicy
+VALUES ('Kurier','Warszawa','Andzej','Popielaty','954258745','Mroków','05552','Polowa','28/22','517323238','531733825','2009-07-07',null,1,3,1)
+/* dane paczek*/
+INSERT INTO dbo.Paczka
+VALUES	('00001','Nadana',1,7,1,3,2,null,1),('00002','Odebrana',2,7,1,3,2,null,1)
 
